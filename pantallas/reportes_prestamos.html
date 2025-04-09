@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes Estadísticos de Préstamos - Biblioteca Virtual</title>
+    <link rel="stylesheet" href="../css/reportes_prestamos.css">
+    <!-- Puedes incluir librerías de gráficos aquí como Chart.js o Google Charts si lo deseas -->
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../IMG/logo.png" alt="PBU" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro_libro.html">Registrar Libro</a></li>
+                <li><a href="reportes_prestamos.html">Reportes</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="reportes-section">
+            <div class="reportes-box">
+                <h1>Reportes Estadísticos de Préstamos</h1>
+                <p>Estadísticas sobre los préstamos realizados</p>
+
+                <!-- Aquí irían los gráficos de las estadísticas, por ejemplo con Chart.js -->
+                <div id="graficos-estadisticos">
+                    <!-- Por ejemplo, un gráfico de barras mostrando los préstamos por mes -->
+                    <canvas id="prestamosPorMes"></canvas>
+                </div>
+
+                <h2>Préstamos Recientes</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID Préstamo</th>
+                            <th>Usuario</th>
+                            <th>Libro</th>
+                            <th>Fecha de Préstamo</th>
+                            <th>Fecha de Devolución</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Juan Pérez</td>
+                            <td>El Señor de los Anillos</td>
+                            <td>2025-04-01</td>
+                            <td>2025-04-10</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Ana Martínez</td>
+                            <td>1984</td>
+                            <td>2025-03-28</td>
+                            <td>2025-04-07</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Carlos López</td>
+                            <td>Harry Potter y la Piedra Filosofal</td>
+                            <td>2025-03-25</td>
+                            <td>2025-04-05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Biblioteca Virtual</p>
+    </footer>
+
+    <!-- Incluir librerías de gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Ejemplo de gráfico de préstamos por mes utilizando Chart.js
+        var ctx = document.getElementById('prestamosPorMes').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar', // Tipo de gráfico
+            data: {
+                labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'], // Meses
+                datasets: [{
+                    label: 'Préstamos por mes',
+                    data: [15, 20, 35, 40, 25], // Datos de préstamos por mes
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

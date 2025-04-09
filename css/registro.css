@@ -1,0 +1,120 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
+    background-color: #f5f5f5;
+    border-bottom: 3px solid #e5e5e5;
+}
+
+header .logo img {
+    width: 60px;
+    height: auto;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Main */
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.register-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ff58a8;
+    border-radius: 20px;
+    padding: 40px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-box {
+    text-align: center;
+    color: #fff;
+}
+
+.register-box h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.register-box p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.register-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.register-box button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 5px;
+    background-color: #6f0bca;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+
+.register-box button:hover {
+    background-color: #57099f;
+}
+
+.register-box .login-link {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+.register-box .login-link a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f5f5f5;
+    margin-top: 20px;
+    font-size: 14px;
+}

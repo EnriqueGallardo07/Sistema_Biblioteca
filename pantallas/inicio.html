@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca Virtual</title>
+    <link rel="stylesheet" href="../css/inicio.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../IMG/logo.png" alt="PBU" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro.html">Registrarse</a></li>
+                <li><a href="https://upp.edu.mx/">UPP</a></li>
+                <li><a href="registro_libro.html">Registrar Libro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="login-section">
+            <div class="login-box">
+                <h1>Inicio de Sesión</h1>
+                <p>Biblioteca Virtual</p>
+
+                <form action="login.php" method="POST">
+                    <input type="text" id="usuario" name="usuario" placeholder="Usuario" required />
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
+                    <button type="submit" class="btn-login">Ingresar</button>
+                </form>
+                <br>
+                <p class="registro-link">¿No tienes cuenta? <br><a href="registro.html">Regístrate aquí</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Biblioteca Virtual</p>
+    </footer>
+</body>
+</html>
