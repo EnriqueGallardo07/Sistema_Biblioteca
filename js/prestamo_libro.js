@@ -29,6 +29,10 @@ function calcularFechaDevolucion() {
     document.getElementById('fecha_devolucion').value = fechaDevolucionFormatted;
 }
 
+function habilitarCampoDevolucion() {
+    document.getElementById('fecha_devolucion').removeAttribute('readonly');
+}
+
 // Función para formatear la fecha a formato DD/MM/YYYY
 function formatDateToDDMMYYYY(date) {
     const day = String(date.getDate()).padStart(2, '0'); // Día con 2 dígitos

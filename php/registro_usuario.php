@@ -1,26 +1,40 @@
 <?php
-// Incluir el archivo de conexión
-include('conexion.php');
+header("Access-Control-Allow-Origin: *"); // Solo para desarrollo
+require_once 'conexion.php';
 
-// Obtener los datos del formulario
-$nombre_usuario = $_POST['nombre_usuario'];
-$correo = $_POST['correo'];
-$telefono = $_POST['telefono'];
-$contrasena = $_POST['contrasena']; // La contraseña será encriptada
-$rol = $_POST['rol'] ?? 'usuario'; // Por defecto el rol es 'usuario'
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validar campos obligatorios
+    if (empty($_POST['nombre_usuario']) || empty($_POST['correo']) || empty($_POST['contrasena'])) {
+        die("Error: Faltan campos obligatorios (nombre, correo o contraseña)");
+    }
 
-// Encriptar la contraseña
-$contrasena_encriptada = password_hash($contrasena, PASSWORD_BCRYPT);
+    // Procesar datos
+    $nombre = trim($_POST['nombre_usuario']);
+    $correo = filter_var($_POST['correo'], FILTER_VALIDATE_EMAIL);
+    $telefono = $_POST['telefono'] ?? null; // Opcional
+    $contrasena = password_hash($_POST['contrasena'], PASSWORD_BCRYPT);
 
-try {
-    // Insertar los datos del usuario en la base de datos
-    $sql = "INSERT INTO usuarios (nombre_usuario, correo, telefono, contrasena, rol) 
-            VALUES (?, ?, ?, ?, ?)";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute([$nombre_usuario, $correo, $telefono, $contrasena_encriptada, $rol]);
+    if (!$correo) {
+        die("Error: Correo no válido");
+    }
 
-    echo "Usuario registrado con éxito.";
-} catch (PDOException $e) {
-    echo "Error al registrar usuario: " . $e->getMessage();
+    // Insertar en BD
+    try {
+        $stmt = $pdo->prepare("INSERT INTO usuarios (nombre_usuario, correo, telefono, contrasena) 
+                              VALUES (?, ?, ?, ?)");
+        $stmt->execute([$nombre, $correo, $telefono, $contrasena]);
+        
+        echo "¡Usuario registrado! Redirigiendo...";
+        // Opcional: Redirigir después de 2 segundos
+        header("Refresh: 2; url=http://localhost/Biblioteca/pantallas/inicio.html");
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) {
+            die("Error: El correo ya está registrado");
+        } else {
+            die("Error al registrar: " . $e->getMessage());
+        }
+    }
+} else {
+    die("Error: Método no permitido");
 }
 ?>

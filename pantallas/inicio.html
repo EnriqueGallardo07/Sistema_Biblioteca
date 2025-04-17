@@ -13,10 +13,10 @@
         </div>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="registro.html">Registrarse</a></li>
+                <li><a href="http://localhost/Biblioteca/pantallas/index.html">Inicio</a></li>
+                <li><a href="http://localhost/Biblioteca/pantallas/registro.html">Registrarse</a></li>
                 <li><a href="https://upp.edu.mx/">UPP</a></li>
-                <li><a href="registro_libro.html">Registrar Libro</a></li>
+                <li><a href="http://localhost/Biblioteca/pantallas/registro_libro.html">Registrar Libro</a></li>
             </ul>
         </nav>
     </header>
@@ -27,13 +27,15 @@
                 <h1>Inicio de Sesión</h1>
                 <p>Biblioteca Virtual</p>
 
-                <form action="login.php" method="POST">
-                    <input type="text" id="usuario" name="usuario" placeholder="Usuario" required />
-                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
-                    <button type="submit" class="btn-login">Ingresar</button>
+                <form action="http://localhost/Biblioteca/php/login.php" method="POST">
+                    <!-- Campos del formulario -->
+                    <input type="text" name="usuario" placeholder="Usuario" required>
+                    <input type="password" name="contrasena" placeholder="Contrasena" required>
+                    <button type="submit">Ingresar</button>
                 </form>
+                
                 <br>
-                <p class="registro-link">¿No tienes cuenta? <br><a href="registro.html">Regístrate aquí</a></p>
+                <p class="registro-link">¿No tienes cuenta? <br><a href="http://localhost/Biblioteca/pantallas/registro.html">Regístrate aquí</a></p>
             </div>
         </section>
     </main>

@@ -99,6 +99,14 @@ main {
 .login-box button:hover {
     background-color: #57099f;
 }
+.error-message {
+    color: #ff3860;
+    background: #ffeef0;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
 
 /* Footer */
 footer {

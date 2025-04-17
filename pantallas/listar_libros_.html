@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de Libros</title>
+    <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../IMG/logo.png" alt="Logo Biblioteca">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro_libro.html">Registrar Libro</a></li>
+                <li><a href="listar_libros.html">Ver Libros</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="prestamo-section">
+            <div class="prestamo-box">
+                <h1>Listado de Libros</h1>
+                <div id="tabla-libros">
+                    <!-- Aquí se insertará la tabla desde PHP -->
+                    <?php include '../php/listar_libros_Admin.php'; ?>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Biblioteca Virtual</p>
+    </footer>
+</body>
+</html>

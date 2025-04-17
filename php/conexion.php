@@ -1,14 +1,14 @@
 <?php
-$host = 'localhost'; // Servidor de base de datos
-$dbname = 'biblioteca'; // Nombre de la base de datos
-$username = 'root'; // Usuario de MySQL
-$password = ''; // Contraseña (por defecto en XAMPP es vacía)
+$host = 'localhost';
+$dbname = 'biblioteca';
+$username = 'root';
+$password = '';
 
-// Crear la conexión
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "¡Conexión exitosa a la base de datos! 🎉"; // Mensaje de éxito
 } catch (PDOException $e) {
-    die("Error de conexión: " . $e->getMessage());
+    die("Error de conexión: " . $e->getMessage()); // Mensaje de error
 }
 ?>

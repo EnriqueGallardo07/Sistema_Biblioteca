@@ -1,0 +1,13 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "chrome",
+        "request": "launch",
+        "name": "Abrir index desde localhost",
+        "url": "http://localhost/Biblioteca/pantallas/index.html",
+        "webRoot": "${workspaceFolder}"
+      }
+    ]
+  }
+  

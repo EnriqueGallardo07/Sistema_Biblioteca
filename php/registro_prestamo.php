@@ -1,29 +1,72 @@
 <?php
-// Incluir el archivo de conexión
-include('conexion.php');
+require_once 'conexion.php';
 
-// Obtener los datos del formulario
-$id_usuario = $_POST['id_usuario']; // ID del usuario
-$id_libro = $_POST['id_libro']; // ID del libro
-$fecha_prestamo = $_POST['fecha_prestamo']; // Fecha de préstamo (en formato YYYY-MM-DD)
+// Función para convertir DD/MM/YYYY → YYYY-MM-DD
+function convertirFecha($fecha) {
+    $partes = explode('/', $fecha);
+    if (count($partes) !== 3) {
+        return null; // o lanza un error si prefieres
+    }
+    return $partes[2] . '-' . $partes[1] . '-' . $partes[0];
+}
 
-// Calcular la fecha de devolución sumando 3 días hábiles
-$fecha_devolucion = date('Y-m-d', strtotime($fecha_prestamo . ' + 3 weekdays'));
 
-// Insertar el préstamo en la base de datos
+
+// Validar que las fechas vengan correctamente
+if (!isset($_POST['fecha_prestamo']) || empty($_POST['fecha_prestamo']) ||
+    !isset($_POST['fecha_devolucion']) || empty($_POST['fecha_devolucion'])) {
+    die("⚠️ Error: Las fechas no fueron enviadas correctamente.");
+}
+
+// Obtener datos del formulario
+$titulo = $_POST['titulo'];
+$autor = $_POST['autor'];
+$isbn = $_POST['isbn'];
+$nombre = $_POST['nombre'];
+$correo = $_POST['correo'];
+$telefono = $_POST['telefono'];
+$fecha_prestamo = convertirFecha($_POST['fecha_prestamo']);
+$fecha_devolucion = convertirFecha($_POST['fecha_devolucion']);
+
+
+
+// Buscar ID del libro por ISBN
+$stmtLibro = $pdo->prepare("SELECT id_libro FROM libros WHERE isbn = ? AND disponible = 1");
+$stmtLibro->execute([$isbn]);
+$id_libro = $stmtLibro->fetchColumn();
+
+if (!$id_libro) {
+    die("El libro no está disponible o no existe.");
+}
+
+// Buscar o registrar usuario por correo
+$stmtUsuario = $pdo->prepare("SELECT id_usuario FROM usuarios WHERE correo = ?");
+$stmtUsuario->execute([$correo]);
+$id_usuario = $stmtUsuario->fetchColumn();
+
+if (!$id_usuario) {
+    $stmtInsert = $pdo->prepare("INSERT INTO usuarios (nombre_usuario, correo, telefono, rol) VALUES (?, ?, ?, 'usuario')");
+    $stmtInsert->execute([$nombre, $correo, $telefono]);
+    $id_usuario = $pdo->lastInsertId();
+}
+
+// Convertir fecha de devolución (enviada desde el JS)
+$fecha_devolucion = convertirFecha($_POST['fecha_devolucion']);
+
+
 try {
-    $sql = "INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion) 
+    // Insertar préstamo
+    $sql = "INSERT INTO prestamos (id_usuario, id_libro, fecha_prestamo, fecha_devolucion)
             VALUES (?, ?, ?, ?)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_usuario, $id_libro, $fecha_prestamo, $fecha_devolucion]);
 
     // Marcar el libro como no disponible
-    $sql_update = "UPDATE libros SET disponible = 0 WHERE id_libro = ?";
-    $stmt_update = $pdo->prepare($sql_update);
+    $stmt_update = $pdo->prepare("UPDATE libros SET disponible = 0 WHERE id_libro = ?");
     $stmt_update->execute([$id_libro]);
 
-    echo "Préstamo registrado con éxito. Fecha de devolución: " . $fecha_devolucion;
+    echo "📚 Préstamo registrado con éxito. Fecha de devolución: " . date('d/m/Y', strtotime($fecha_devolucion));
 } catch (PDOException $e) {
-    echo "Error al registrar préstamo: " . $e->getMessage();
+    echo "Error al registrar el préstamo: " . $e->getMessage();
 }
 ?>
