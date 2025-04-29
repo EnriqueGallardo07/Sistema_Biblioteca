@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Libro - Biblioteca Virtual</title>
+    <link rel="stylesheet" href="../css/registro_libro.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../IMG/logo.png" alt="PBU" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro_libro.html">Registrar Libro</a></li>
+                <li><a href="#">Categorías</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="registro-libro-section">
+            <div class="registro-libro-box">
+                <h1>Registrar un Libro</h1>
+                <p>Complete los detalles del libro para registrarlo</p>
+
+                <form action="registro_libro.php" method="POST">
+                    <input type="text" id="titulo" name="titulo" placeholder="Título del libro" required />
+                    <input type="text" id="autor" name="autor" placeholder="Autor del libro" required />
+                    <input type="number" id="anio" name="anio" placeholder="Año de publicación" required />
+                    <input type="text" id="categoria" name="categoria" placeholder="Categoría del libro" required />
+                    <textarea id="descripcion" name="descripcion" placeholder="Descripción del libro" required></textarea>
+                    <input type="text" id="isbn" name="isbn" placeholder="ISBN del libro" required />
+                    <button type="submit" class="btn-register">Registrar Libro</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Biblioteca Virtual</p>
+    </footer>
+</body>
+</html>
