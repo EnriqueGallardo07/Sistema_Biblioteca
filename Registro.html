@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Biblioteca Virtual</title>
+    <link rel="stylesheet" href="../css/registro.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../IMG/logo.png" alt="PBU" />
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="registro.html">Registrarse</a></li>
+                <li><a href="https://upp.edu.mx/">UPP</a></li> 
+                <li><a href="registro_libro.html">Registrar Libro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="register-section">
+            <div class="register-box">
+                <h1>Regístrate</h1>
+                <p>Completa el formulario para crear tu cuenta</p>
+
+                <form action="../php/registro.php" method="POST">
+                    <input type="text" id="usuario" name="usuario" placeholder="Nombre de usuario" required />
+                    <input type="email" id="correo" name="correo" placeholder="Correo electrónico" required />
+                    <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" required />
+                    <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirmar contraseña" required />
+                    <button type="submit" class="btn-register">Registrar</button>
+                </form>
+                <p class="login-link">¿Ya tienes cuenta? <a href="inicio.html">Inicia sesión aquí</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Biblioteca Virtual</p>
+    </footer>
+</body>
+</html>
