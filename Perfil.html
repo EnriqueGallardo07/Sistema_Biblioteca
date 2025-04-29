@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+ <html lang="es">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Perfil de Usuario - Biblioteca Virtual</title>
+     <link rel="stylesheet" href="../css/perfil.css">
+ </head>
+ <body>
+     <header>
+         <div class="logo">
+             <img src="../IMG/logo.png" alt="PBU" />
+         </div>
+         <nav>   
+             <ul>
+                 <li><a href="index.html">Inicio</a></li>
+                 <li><a href="registro_libro.html">Registrar Libro</a></li>
+                 <li><a href="reportes_prestamos.html">Reportes</a></li>
+                 <li><a href="perfil.html">Perfil</a></li>
+                 <li><a href="#">Contacto</a></li>
+             </ul>
+         </nav>
+         <div class="user-cart">
+             <a href="perfil.html" class="user-icon">👤</a>
+             <a href="#" class="cart-icon">🛒</a>
+         </div>
+     </header>
+ 
+     <main>
+         <section class="perfil-section">
+             <div class="perfil-box">
+                 <h1>Mi Perfil</h1>   
+ 
+                 <form action="actualizar_perfil.php" method="POST">
+                     <div class="form-group">
+                         <label for="nombre_usuario">Nombre de Usuario</label>
+                         <input type="text" id="nombre_usuario" name="nombre_usuario" value="Juan Pérez" required />
+                     </div>
+                     
+                     <div class="form-group">
+                         <label for="correo">Correo Electrónico</label>
+                         <input type="email" id="correo" name="correo" value="juan.perez@ejemplo.com" required />
+                     </div>
+ 
+                     <div class="form-group">
+                         <label for="contrasena">Nueva Contraseña</label>
+                         <input type="password" id="contrasena" name="contrasena" placeholder="Nueva contraseña" />
+                     </div>
+ 
+                     <div class="form-group">
+                         <label for="confirmar_contrasena">Confirmar Contraseña</label>
+                         <input type="password" id="confirmar_contrasena" name="confirmar_contrasena" placeholder="Confirmar nueva contraseña" />
+                     </div>
+ 
+                     <button type="submit" class="btn-save">Guardar Cambios</button>
+                 </form>
+             </div>
+         </section>
+     </main>
+ 
+     <footer>
+         <p>&copy; 2025 Biblioteca Virtual</p>
+     </footer>
+ </body>
+ </html>
