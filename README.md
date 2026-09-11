@@ -40,7 +40,7 @@ The project was developed as part of a university assignment and includes functi
 ```text
 Sistema_Biblioteca/
 ├── bd/
-│   └── biblioteca.db
+│   └── biblioteca.sql
 ├── css/
 ├── IMG/
 ├── js/
